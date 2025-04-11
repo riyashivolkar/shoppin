@@ -30,7 +30,7 @@ export default function SearchBar() {
     setShowVoiceOverlay(false);
     setShowImageLens(true);
   };
-
+  //ss
   return (
     <>
       {/* Search Input Default */}
