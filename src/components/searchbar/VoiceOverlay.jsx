@@ -25,7 +25,7 @@ export default function VoiceOverlay({ show, onClose }) {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 z-50 px-4 py-12 text-center bg-white "
+          className="fixed inset-0 z-50 px-4 py-12 overflow-x-hidden text-center bg-white "
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "100%" }}

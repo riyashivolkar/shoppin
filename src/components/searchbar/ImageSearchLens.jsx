@@ -38,7 +38,7 @@ const ImageSearchLens = ({ show, onClose }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 px-4 py-12 overflow-y-auto bg-white"
+      className="fixed inset-0 z-50 px-4 py-12 overflow-x-hidden overflow-y-auto bg-white"
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
       exit={{ y: "100%" }}
