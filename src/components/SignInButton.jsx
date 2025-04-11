@@ -1,16 +1,11 @@
 // src/components/SignInButton.jsx
 import React from "react";
-import {
-  signInWithPopup,
-  auth,
-  provider,
-  signInWithRedirect,
-} from "../utils/firebase";
+import { signInWithPopup, auth, provider } from "../utils/firebase";
 
 export default function SignInButton() {
   const handleSignIn = async () => {
     try {
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.error("Error during sign in", error);
     }
