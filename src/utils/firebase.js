@@ -1,4 +1,4 @@
-// src/utils/firebase.js (or .ts if you're using TS)
+// src/utils/firebase.js
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -8,13 +8,13 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAJivlXlVNX8jD6tloXAm3gQAbCSFTYMTg",
-  authDomain: "shoppin-ab312.firebaseapp.com",
-  projectId: "shoppin-ab312",
-  storageBucket: "shoppin-ab312.appspot.com",
-  messagingSenderId: "46148461031",
-  appId: "1:46148461031:web:aa276c21b83f0b68a91d42",
-  measurementId: "G-1N8WDPME0X",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
