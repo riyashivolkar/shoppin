@@ -1,28 +1,15 @@
-import React, { useEffect } from "react";
-import {
-  signInWithRedirect,
-  getRedirectResult,
-  auth,
-  provider,
-} from "../utils/firebase";
+// src/components/SignInButton.jsx
+import React from "react";
+import { signInWithPopup, auth, provider } from "../utils/firebase";
 
 export default function SignInButton() {
-  const handleSignIn = () => {
-    signInWithRedirect(auth, provider);
+  const handleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during sign in", error);
+    }
   };
-
-  useEffect(() => {
-    // This runs after redirect sign-in
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result?.user) {
-          console.log("User signed in:", result.user);
-        }
-      })
-      .catch((error) => {
-        console.error("Redirect sign-in error:", error);
-      });
-  }, []);
 
   return (
     <button
