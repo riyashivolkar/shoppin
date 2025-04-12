@@ -104,7 +104,7 @@ const ImageSearchLens = ({ show, onClose }) => {
               </div>
             </div>
 
-            <div className="flex justify-center mt-4 text-sm font-medium text-gray-800 gap-x-3">
+            <div className="flex justify-center mt-4 text-xs font-medium text-gray-800 gap-x-3">
               {ImageSearchButtonsData.map((feature, index) => (
                 <ImageSearchButtons key={index} {...feature} />
               ))}
