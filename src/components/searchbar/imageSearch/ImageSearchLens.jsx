@@ -131,7 +131,7 @@ const ImageSearchLens = ({ show, onClose }) => {
 
       {/* Cropping View */}
       {imageSrc && showCropper && (
-        <div className="relative flex items-center justify-center w-full h-full overflow-hidden rounded-lg bg-black/80">
+        <div className="relative flex items-center justify-center w-full h-full overflow-hidden bg-black/80">
           <Cropper
             image={imageSrc}
             crop={{ x: 0, y: 0 }}
