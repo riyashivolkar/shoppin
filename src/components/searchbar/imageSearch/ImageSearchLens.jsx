@@ -2,13 +2,13 @@ import React, { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import Cropper from "react-easy-crop";
 import { motion } from "framer-motion";
-import { FiX } from "react-icons/fi";
-import { FaGraduationCap, FaSearch } from "react-icons/fa";
-import { HiAcademicCap, HiOutlineChevronLeft } from "react-icons/hi";
-import GalleryPreview from "./GalleryPreview";
-import { HiOutlineAcademicCap } from "react-icons/hi2";
-import { ImageSearchButtonsData } from "../../utils/data";
-import ImageSearchButtons from "../ui/ImageSearchButtons";
+import { FaSearch } from "react-icons/fa";
+import { HiOutlineChevronLeft } from "react-icons/hi";
+import GalleryPreview from "../GalleryPreview";
+import { ImageSearchButtonsData } from "../../../utils/data";
+import ImageSearchButtons from "../../ui/ImageSearchButtons";
+import CameraFrame from "../../ui/Snippets";
+import ImageCropper from "./ImageCropper";
 
 const ImageSearchLens = ({ show, onClose }) => {
   const webcamRef = useRef(null);
@@ -17,6 +17,8 @@ const ImageSearchLens = ({ show, onClose }) => {
   const [showCropper, setShowCropper] = useState(false);
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
+  // Add this state to manage selected image from Gallery
+  const [galleryImage, setGalleryImage] = useState(null);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -40,11 +42,22 @@ const ImageSearchLens = ({ show, onClose }) => {
     }
   };
 
+  const handleBack = () => {
+    if (galleryImage || imageSrc) {
+      setGalleryImage(null);
+      setImageSrc(null);
+      setShowCropper(false);
+      setResults(null);
+    } else {
+      onClose();
+    }
+  };
+
   if (!show) return null;
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-white"
+      className="fixed inset-0 z-40 bg-white"
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
       exit={{ y: "100%" }}
@@ -54,46 +67,49 @@ const ImageSearchLens = ({ show, onClose }) => {
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-between w-full max-w-[400px] px-4">
         {/* Back Button */}
         <button
-          onClick={onClose}
-          className="flex items-center justify-center w-12 h-12 text-white transition rounded-full shadow hover:bg-red-500"
+          onClick={handleBack}
+          className="flex items-center justify-center w-12 h-12 text-white transition rounded-full"
         >
           <HiOutlineChevronLeft className="text-2xl" />
         </button>
 
-        {/* Title */}
         <h1 className="text-lg font-semibold text-white">Google Lens</h1>
 
-        {/* 3 Dots Menu */}
         <div className="flex items-center justify-center w-12 h-12 text-white rounded-full cursor-pointer hover:bg-gray-700">
           <span className="text-3xl">⋯</span>
         </div>
       </div>
 
-      {!imageSrc && (
+      {!imageSrc && !galleryImage && (
         <div className="relative flex flex-col w-full h-full bg-white">
           <div className="relative w-full h-[92%] rounded-b-3xl overflow-hidden bg-white">
-            <div className="absolute inset-0 z-10 pointer-events-none">
-              <div className="absolute w-14 h-14 border-t-[3px] border-l-[3px] border-white/50 top-[20%] left-[10%] rounded-tl-[36px] " />
+            <CameraFrame />
 
-              <div className="absolute w-14 h-14 border-t-[3px] border-r-[3px] border-white/50 top-[20%] right-[10%] rounded-tr-[36px] " />
-
-              <div className="absolute w-14 h-14 border-b-[3px] border-l-[3px] border-white/50 bottom-[40%] left-[10%] rounded-bl-[36px] " />
-
-              <div className="absolute w-14 h-14 border-b-[3px] border-r-[3px] border-white/50 bottom-[40%] right-[10%] rounded-br-[36px]" />
-            </div>
-
-            <Webcam
-              audio={false}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              videoConstraints={{ facingMode: { exact: "environment" } }}
-              className="object-cover w-full h-full bg-black "
-            />
+            {galleryImage ? (
+              <img
+                src={galleryImage}
+                alt="Uploaded"
+                className="object-cover w-full h-full bg-black"
+              />
+            ) : (
+              <Webcam
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                videoConstraints={{ facingMode: { exact: "environment" } }}
+                className="object-cover w-full h-full bg-black"
+              />
+            )}
           </div>
-          <div className="w-full h-[8%] pb-4 px-4 bg-white">
+          <div className="w-full h-[8%] pb-4 mb-4 px-4 bg-white">
             <div className="absolute z-10 flex items-center space-x-6 -translate-x-1/2 left-1/2 bottom-24">
-              <div className="absolute top-5 bg-red-50"></div>
-              <GalleryPreview />
+              <div className="absolute top-5 "></div>
+              <GalleryPreview
+                setGalleryImage={setGalleryImage}
+                setImageSrc={setImageSrc}
+                setShowCropper={setShowCropper}
+              />
+
               <div className="flex items-center justify-center w-24 h-24 border-4 border-white rounded-full">
                 <button
                   onClick={capture}
@@ -114,24 +130,13 @@ const ImageSearchLens = ({ show, onClose }) => {
       )}
 
       {/* Cropping View */}
-      {imageSrc && showCropper && (
-        <div className="relative w-full h-full">
-          <Cropper
-            image={imageSrc}
-            crop={{ x: 0, y: 0 }}
-            zoom={1}
-            aspect={4 / 3}
-            onCropChange={() => {}}
-            onCropComplete={onCropComplete}
-            onZoomChange={() => {}}
-          />
-          <button
-            onClick={uploadImage}
-            className="absolute px-6 py-3 text-white transition bg-green-600 rounded-full shadow-lg bottom-6 right-6 hover:bg-green-700"
-          >
-            Search
-          </button>
-        </div>
+      {showCropper && (
+        <ImageCropper
+          imageSrc={imageSrc}
+          setShowCropper={setShowCropper}
+          onCropComplete={onCropComplete}
+          uploadImage={uploadImage}
+        />
       )}
 
       {/* Loading Spinner */}

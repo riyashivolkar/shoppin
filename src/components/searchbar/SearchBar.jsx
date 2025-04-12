@@ -12,7 +12,7 @@ import { trendingItems } from "../../utils/data";
 import { HiTrendingUp } from "react-icons/hi";
 
 import VoiceOverlay from "./VoiceOverlay";
-import ImageSearchLens from "./ImageSearchLens";
+import ImageSearchLens from "./imageSearch/ImageSearchLens";
 
 export default function SearchBar() {
   const [showOverlay, setShowOverlay] = useState(false);
