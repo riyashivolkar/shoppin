@@ -4,7 +4,7 @@ import Cropper from "react-easy-crop";
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
 import { HiOutlineChevronLeft } from "react-icons/hi";
-import GalleryPreview from "../GalleryPreview";
+import GalleryPreview from "./GalleryPreview";
 import { ImageSearchButtonsData } from "../../../utils/data";
 import ImageSearchButtons from "../../ui/ImageSearchButtons";
 import CameraFrame from "../../ui/Snippets";
@@ -130,13 +130,32 @@ const ImageSearchLens = ({ show, onClose }) => {
       )}
 
       {/* Cropping View */}
-      {showCropper && (
-        <ImageCropper
-          imageSrc={imageSrc}
-          setShowCropper={setShowCropper}
-          onCropComplete={onCropComplete}
-          uploadImage={uploadImage}
-        />
+      {imageSrc && showCropper && (
+        <div className="relative flex items-center justify-center w-full h-full overflow-hidden rounded-lg bg-black/80">
+          <Cropper
+            image={imageSrc}
+            crop={{ x: 0, y: 0 }}
+            zoom={1}
+            aspect={4 / 3}
+            onCropChange={() => {}}
+            onCropComplete={onCropComplete}
+            onZoomChange={() => {}}
+            style={{
+              containerStyle: { width: "100%", height: "100%" },
+              cropAreaStyle: { borderRadius: "12px" },
+            }}
+          />
+
+          {/* Overlay button */}
+          <div className="absolute bottom-6 right-6">
+            <button
+              onClick={uploadImage}
+              className="px-5 py-2 text-sm font-medium text-white transition duration-200 bg-green-600 rounded-full shadow-md hover:bg-green-700 active:scale-95"
+            >
+              🔍 Search Image
+            </button>
+          </div>
+        </div>
       )}
 
       {/* Loading Spinner */}
