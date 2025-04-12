@@ -90,14 +90,10 @@ const ImageSearchLens = ({ show, onClose }) => {
               className="object-cover w-full h-full bg-black "
             />
           </div>
-          {/* White background below webcam */}
-          <div className="w-full h-[8%] bg-white">
-            {/* Floating camera button */}
+          <div className="w-full h-[8%] pb-4 px-4 bg-white">
             <div className="absolute z-10 flex items-center space-x-6 -translate-x-1/2 left-1/2 bottom-24">
-              {/* Gallery Thumbnail */}
               <div className="absolute top-5 bg-red-50"></div>
               <GalleryPreview />
-              {/* Capture Button with Ring */}
               <div className="flex items-center justify-center w-24 h-24 border-4 border-white rounded-full">
                 <button
                   onClick={capture}
@@ -109,7 +105,6 @@ const ImageSearchLens = ({ show, onClose }) => {
             </div>
 
             <div className="flex justify-center mt-4 text-sm font-medium text-gray-800 gap-x-3">
-              {/* Translate */}
               {ImageSearchButtonsData.map((feature, index) => (
                 <ImageSearchButtons key={index} {...feature} />
               ))}

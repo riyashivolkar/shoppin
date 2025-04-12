@@ -24,7 +24,6 @@ export default function Header() {
     <header className="flex items-center justify-between w-full px-4 py-3 ">
       {/* Left Side */}
       <div className="flex items-center space-x-4 text-sm text-gray-700">
-        {/* Signed in - Small devices: Labs + All + Images */}
         {user ? (
           <div className="flex items-center space-x-2 sm:flex md:hidden">
             <FaFlask size={24} title="Search Labs" />
