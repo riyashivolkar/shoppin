@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth, signOut } from "../utils/firebase";
-import SignInButton from "./SignInButton";
+import SignInButton from "./ui/SignInButton";
 import { FaTh, FaFlask, FaBars } from "react-icons/fa";
 // Add these at the top with other imports:
 import { FcGoogle } from "react-icons/fc";

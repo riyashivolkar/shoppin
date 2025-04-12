@@ -3,6 +3,12 @@ import Webcam from "react-webcam";
 import Cropper from "react-easy-crop";
 import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
+import { FaGraduationCap, FaSearch } from "react-icons/fa";
+import { HiAcademicCap, HiOutlineChevronLeft } from "react-icons/hi";
+import GalleryPreview from "./GalleryPreview";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { ImageSearchButtonsData } from "../../utils/data";
+import ImageSearchButtons from "../ui/ImageSearchButtons";
 
 const ImageSearchLens = ({ show, onClose }) => {
   const webcamRef = useRef(null);
@@ -45,36 +51,70 @@ const ImageSearchLens = ({ show, onClose }) => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Close Button (small and modern) */}
-      <button
-        onClick={onClose}
-        className="absolute z-20 flex items-center justify-center text-white transition bg-white rounded-full shadow w-14 h-14 top-6 right-6 hover:bg-red-500"
-      >
-        <FiX className="text-2xl" />
-      </button>
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-between w-full max-w-[400px] px-4">
+        {/* Back Button */}
+        <button
+          onClick={onClose}
+          className="flex items-center justify-center w-12 h-12 text-white transition rounded-full shadow hover:bg-red-500"
+        >
+          <HiOutlineChevronLeft className="text-2xl" />
+        </button>
+
+        {/* Title */}
+        <h1 className="text-lg font-semibold text-white">Google Lens</h1>
+
+        {/* 3 Dots Menu */}
+        <div className="flex items-center justify-center w-12 h-12 text-white rounded-full cursor-pointer hover:bg-gray-700">
+          <span className="text-3xl">⋯</span>
+        </div>
+      </div>
 
       {!imageSrc && (
         <div className="relative flex flex-col w-full h-full bg-white">
-          {/* Webcam view with rounded bottom */}
-          <div className="relative w-full h-[85%] rounded-b-3xl overflow-hidden bg-white">
+          <div className="relative w-full h-[92%] rounded-b-3xl overflow-hidden bg-white">
+            <div className="absolute inset-0 z-10 pointer-events-none">
+              <div className="absolute w-14 h-14 border-t-[3px] border-l-[3px] border-white/50 top-[20%] left-[10%] rounded-tl-[36px] " />
+
+              <div className="absolute w-14 h-14 border-t-[3px] border-r-[3px] border-white/50 top-[20%] right-[10%] rounded-tr-[36px] " />
+
+              <div className="absolute w-14 h-14 border-b-[3px] border-l-[3px] border-white/50 bottom-[40%] left-[10%] rounded-bl-[36px] " />
+
+              <div className="absolute w-14 h-14 border-b-[3px] border-r-[3px] border-white/50 bottom-[40%] right-[10%] rounded-br-[36px]" />
+            </div>
+
             <Webcam
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
               videoConstraints={{ facingMode: { exact: "environment" } }}
-              className="object-cover w-full h-full "
+              className="object-cover w-full h-full bg-black "
             />
           </div>
-
           {/* White background below webcam */}
-          <div className="w-full h-[15%] bg-white" />
+          <div className="w-full h-[8%] bg-white">
+            {/* Floating camera button */}
+            <div className="absolute z-10 flex items-center space-x-6 -translate-x-1/2 left-1/2 bottom-24">
+              {/* Gallery Thumbnail */}
+              <div className="absolute top-5 bg-red-50"></div>
+              <GalleryPreview />
+              {/* Capture Button with Ring */}
+              <div className="flex items-center justify-center w-24 h-24 border-4 border-white rounded-full">
+                <button
+                  onClick={capture}
+                  className="flex items-center justify-center w-20 h-20 text-2xl transition bg-white rounded-full shadow-2xl hover:scale-105"
+                >
+                  <FaSearch className="text-xl text-gray-700" />
+                </button>
+              </div>
+            </div>
 
-          {/* Floating camera button */}
-          <button
-            onClick={capture}
-            className="absolute z-20 flex items-center justify-center w-20 h-20 text-2xl transition -translate-x-1/2 bg-white rounded-full shadow-2xl left-1/2 bottom-6 hover:scale-105"
-          >
-            📷
-          </button>
+            <div className="flex justify-center mt-4 text-sm font-medium text-gray-800 gap-x-3">
+              {/* Translate */}
+              {ImageSearchButtonsData.map((feature, index) => (
+                <ImageSearchButtons key={index} {...feature} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
 

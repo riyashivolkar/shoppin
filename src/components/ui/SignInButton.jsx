@@ -1,6 +1,6 @@
 // src/components/SignInButton.jsx
 import React from "react";
-import { signInWithPopup, auth, provider } from "../utils/firebase";
+import { signInWithPopup, auth, provider } from "../../utils/firebase";
 
 export default function SignInButton() {
   const handleSignIn = async () => {

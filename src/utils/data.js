@@ -1,3 +1,6 @@
+import { FaSearch } from "react-icons/fa";
+import { HiOutlineAcademicCap } from "react-icons/hi";
+
 export const iconGrid = [
   {
     icon: "/icons/imgSearch.svg",
@@ -25,4 +28,23 @@ export const trendingItems = [
 
   "Shoppin' dreamy dresses",
   "Shoppin' moodboards",
+];
+
+export const ImageSearchButtonsData = [
+  {
+    label: "Translate",
+    icon: "/icons/translate.svg",
+    type: "image",
+  },
+  {
+    label: "Search",
+    icon: FaSearch,
+    type: "icon",
+    active: true,
+  },
+  {
+    label: "Homework",
+    icon: HiOutlineAcademicCap,
+    type: "icon",
+  },
 ];
