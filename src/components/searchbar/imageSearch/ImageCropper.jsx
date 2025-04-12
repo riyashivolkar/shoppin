@@ -1,56 +1,43 @@
-import { useState } from "react";
-import Cropper from "react-easy-crop"; // Cropper library
+import { useState, useCallback } from "react";
+import Cropper from "react-easy-crop";
 
-const ImageCropper = ({
-  imageSrc,
-  setShowCropper,
-  onCropComplete,
-  uploadImage,
-}) => {
-  const [zoom, setZoom] = useState(1);
-  const [rotation, setRotation] = useState(0);
+const ImageCropper = ({ imageSrc, onCropDone, onClose }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-  // Zoom change handler
-  const handleZoomChange = (event) => {
-    const newZoom = parseFloat(event.target.value);
-    setZoom(newZoom);
-  };
+  const handleCropComplete = useCallback((_, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
 
-  // Rotate handler (rotate by 90 degrees)
-  const handleRotate = () => {
-    setRotation((prevRotation) => (prevRotation + 90) % 360);
+  const handleDone = () => {
+    if (onCropDone && croppedAreaPixels) {
+      onCropDone(croppedAreaPixels);
+    }
   };
 
   return (
-    <div className="relative z-50 flex items-center justify-center w-full h-full overflow-hidden bg-white ">
+    <div className="relative flex items-center justify-center w-full h-full overflow-hidden bg-white">
+      {" "}
       <Cropper
         image={imageSrc}
         crop={crop}
         zoom={zoom}
-        rotation={rotation}
-        aspect={0} // No fixed aspect ratio
+        aspect={4 / 3}
         onCropChange={setCrop}
-        onCropComplete={onCropComplete}
         onZoomChange={setZoom}
-        onRotateChange={setRotation}
-        showGrid={false} // Disable the grid and center lines
+        onCropComplete={handleCropComplete}
         style={{
           containerStyle: { width: "100%", height: "100%" },
-          cropAreaStyle: {
-            borderRadius: "12px",
-            border: "none", // No border around the crop area
-          },
+          cropAreaStyle: { borderRadius: "12px" },
         }}
       />
-
-      {/* Overlay button */}
-      <div className="absolute z-30 bottom-6 right-6">
+      <div className="absolute flex gap-4 bottom-6 right-6">
         <button
-          onClick={uploadImage}
-          className="px-5 py-2 text-sm font-medium text-white transition duration-200 bg-green-600 rounded-full shadow-md hover:bg-green-700 active:scale-95"
+          onClick={handleDone}
+          className="px-5 py-2 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 active:scale-95"
         >
-          Search Image
+          🔍 Search Image
         </button>
       </div>
     </div>

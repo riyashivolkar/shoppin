@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
-import Cropper from "react-easy-crop";
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
 import { HiOutlineChevronLeft } from "react-icons/hi";
@@ -13,21 +12,15 @@ import ImageCropper from "./ImageCropper";
 const ImageSearchLens = ({ show, onClose }) => {
   const webcamRef = useRef(null);
   const [imageSrc, setImageSrc] = useState(null);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [showCropper, setShowCropper] = useState(false);
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
-  // Add this state to manage selected image from Gallery
   const [galleryImage, setGalleryImage] = useState(null);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImageSrc(imageSrc);
     setShowCropper(true);
-  }, []);
-
-  const onCropComplete = useCallback((_, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
   const uploadImage = async () => {
@@ -63,9 +56,7 @@ const ImageSearchLens = ({ show, onClose }) => {
       exit={{ y: "100%" }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
-      {/* Close Button (small and modern) */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-between w-full max-w-[400px] px-4">
-        {/* Back Button */}
         <button
           onClick={handleBack}
           className="flex items-center justify-center w-12 h-12 text-white transition rounded-full"
@@ -84,7 +75,6 @@ const ImageSearchLens = ({ show, onClose }) => {
         <div className="relative flex flex-col w-full h-full bg-white">
           <div className="relative w-full h-[92%] rounded-b-3xl overflow-hidden bg-white">
             <CameraFrame />
-
             {galleryImage ? (
               <img
                 src={galleryImage}
@@ -131,31 +121,15 @@ const ImageSearchLens = ({ show, onClose }) => {
 
       {/* Cropping View */}
       {imageSrc && showCropper && (
-        <div className="relative flex items-center justify-center w-full h-full overflow-hidden bg-black/80">
-          <Cropper
-            image={imageSrc}
-            crop={{ x: 0, y: 0 }}
-            zoom={1}
-            aspect={4 / 3}
-            onCropChange={() => {}}
-            onCropComplete={onCropComplete}
-            onZoomChange={() => {}}
-            style={{
-              containerStyle: { width: "100%", height: "100%" },
-              cropAreaStyle: { borderRadius: "12px" },
-            }}
-          />
-
-          {/* Overlay button */}
-          <div className="absolute bottom-6 right-6">
-            <button
-              onClick={uploadImage}
-              className="px-5 py-2 text-sm font-medium text-white transition duration-200 bg-green-600 rounded-full shadow-md hover:bg-green-700 active:scale-95"
-            >
-              🔍 Search Image
-            </button>
-          </div>
-        </div>
+        <ImageCropper
+          imageSrc={imageSrc}
+          onCropDone={(croppedAreaPixels) => {
+            console.log("Crop Area:", croppedAreaPixels);
+            uploadImage(croppedAreaPixels);
+            setShowCropper(false);
+          }}
+          onClose={() => setShowCropper(false)}
+        />
       )}
 
       {/* Loading Spinner */}
