@@ -7,22 +7,22 @@ const ResultsSheet = ({ open, onDismiss }) => {
   const sheetRef = useRef();
   const flatResults = Object.values(mockResults).flat();
 
-  const [{ y }, setY] = useSpring(() => ({
-    y: 300,
-  }));
+  const [{ y }, setY] = useSpring(() => ({ y: 300 }));
 
   const bind = useDrag(
-    ({ last, movement: [, my], velocity: [, vy], cancel }) => {
+    ({ last, movement: [, my], velocity: [, vy], direction: [, dy] }) => {
       if (my < 0) return;
 
       if (last) {
-        if (my > 100 || vy > 0.5) {
+        if (my > 150 || vy > 0.5) {
           onDismiss();
+        } else if (my < -100 || dy < 0) {
+          setY({ y: 0 }); // full open
         } else {
-          setY({ y: 0 });
+          setY({ y: 300 }); // preview snap
         }
       } else {
-        setY({ y: my });
+        setY({ y: my + 300 });
       }
     },
     {
@@ -32,12 +32,11 @@ const ResultsSheet = ({ open, onDismiss }) => {
     }
   );
 
-  // Animate in when opened
   useEffect(() => {
     if (open) {
-      setY({ y: 0 });
+      setY({ y: 300 });
     } else {
-      setY({ y: 300 }); // Hide when closed
+      setY({ y: 1000 });
     }
   }, [open, setY]);
 
@@ -45,7 +44,9 @@ const ResultsSheet = ({ open, onDismiss }) => {
     <animated.div
       ref={sheetRef}
       {...bind()}
-      style={{ transform: y.interpolate((y) => `translateY(${y}px)`) }}
+      style={{
+        transform: y.interpolate((yVal) => `translateY(${yVal}px)`),
+      }}
       className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white shadow-lg rounded-t-2xl touch-none"
     >
       <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-400" />
