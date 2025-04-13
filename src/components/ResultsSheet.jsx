@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useSpring, animated } from "react-spring";
 import { useDrag } from "@use-gesture/react";
 import mockResults from "../utils/mockResult.json";
@@ -7,45 +7,46 @@ const ResultsSheet = ({ open, onDismiss }) => {
   const sheetRef = useRef();
   const flatResults = Object.values(mockResults).flat();
 
-  const [{ y }, setY] = useSpring(() => ({ y: 300 }));
+  // Start the sheet off-screen or at a certain position at the bottom
+  const [styles, api] = useSpring(() => ({ y: 500 })); // Start at the bottom initially
 
+  // Drag gesture to move the sheet up or down
   const bind = useDrag(
-    ({ last, movement: [, my], velocity: [, vy], direction: [, dy] }) => {
-      if (my < 0) return;
+    ({ last, movement: [, my], velocity: [, vy], cancel }) => {
+      if (my < 0) return; // Prevent dragging upwards past 0
 
       if (last) {
-        if (my > 150 || vy > 0.5) {
+        // If dragged down far enough or fast enough, dismiss
+        if (my > 100 || vy > 0.5) {
           onDismiss();
-        } else if (my < -100 || dy < 0) {
-          setY({ y: 0 }); // full open
         } else {
-          setY({ y: 300 }); // preview snap
+          api.start({ y: my }); // Otherwise stay at current position
         }
       } else {
-        setY({ y: my + 300 });
+        // Track the drag movement
+        api.start({ y: my + 500 }); // Start from the bottom
       }
     },
     {
-      from: () => [0, y.getValue()],
-      bounds: { top: 0 },
-      rubberband: true,
+      from: () => [0, styles.y.get()], // Use styles.y.get() for current position
+      bounds: { top: 0 }, // Restrict to drag upwards only
+      rubberband: true, // Allow for a little bounce-back
     }
   );
 
-  useEffect(() => {
-    if (open) {
-      setY({ y: 300 });
-    } else {
-      setY({ y: 1000 });
-    }
-  }, [open, setY]);
+  // Animate in when opened
+  if (open) {
+    api.start({ y: 0 }); // Bring sheet up when open
+  } else {
+    api.start({ y: 500 }); // Hide when closed
+  }
 
   return (
     <animated.div
       ref={sheetRef}
       {...bind()}
       style={{
-        transform: y.interpolate((yVal) => `translateY(${yVal}px)`),
+        transform: styles.y.to((y) => `translateY(${y}px)`), // Correct usage of to()
       }}
       className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white shadow-lg rounded-t-2xl touch-none"
     >
