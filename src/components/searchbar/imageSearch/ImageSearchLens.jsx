@@ -5,9 +5,9 @@ import { FaSearch } from "react-icons/fa";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import GalleryPreview from "./GalleryPreview";
 import { ImageSearchButtonsData } from "../../../utils/data";
-import ImageSearchButtons from "../../ui/ImageSearchButtons";
 import CameraFrame from "../../ui/Snippets";
 import ImageCropper from "./ImageCropper";
+import ImageSearchButtons from "./ImageSearchButtons";
 
 const ImageSearchLens = ({ show, onClose }) => {
   const webcamRef = useRef(null);
@@ -56,7 +56,9 @@ const ImageSearchLens = ({ show, onClose }) => {
       exit={{ y: "100%" }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
+      {/* Close Button (small and modern) */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-between w-full max-w-[400px] px-4">
+        {/* Back Button */}
         <button
           onClick={handleBack}
           className="flex items-center justify-center w-12 h-12 text-white transition rounded-full"
@@ -75,6 +77,7 @@ const ImageSearchLens = ({ show, onClose }) => {
         <div className="relative flex flex-col w-full h-full bg-white">
           <div className="relative w-full h-[92%] rounded-b-3xl overflow-hidden bg-white">
             <CameraFrame />
+
             {galleryImage ? (
               <img
                 src={galleryImage}
@@ -125,7 +128,7 @@ const ImageSearchLens = ({ show, onClose }) => {
           imageSrc={imageSrc}
           onCropDone={(croppedAreaPixels) => {
             console.log("Crop Area:", croppedAreaPixels);
-            uploadImage(croppedAreaPixels);
+            uploadImage(croppedAreaPixels); // or pass to next step
             setShowCropper(false);
           }}
           onClose={() => setShowCropper(false)}

@@ -1,0 +1,74 @@
+{
+  "dog": [
+    {
+      "title": "Golden Retriever",
+      "image_url": "https://images.pexels.com/photos/774731/pexels-photo-774731.jpeg"
+    },
+    {
+      "title": "Pug",
+      "image_url": "https://images.pexels.com/photos/374898/pexels-photo-374898.jpeg"
+    },
+    {
+      "title": "Husky in Snow",
+      "image_url": "https://images.pexels.com/photos/573242/pexels-photo-573242.jpeg"
+    },
+    {
+      "title": "Black Labrador",
+      "image_url": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
+    }
+  ],
+  "cat": [
+    {
+      "title": "Siamese Cat",
+      "image_url": "https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg"
+    },
+    {
+      "title": "Sleeping Cat",
+      "image_url": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
+    },
+    {
+      "title": "Curious Kitten",
+      "image_url": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
+    },
+    {
+      "title": "Cat by the Window",
+      "image_url": "https://images.pexels.com/photos/326875/pexels-photo-326875.jpeg"
+    }
+  ],
+  "car": [
+    {
+      "title": "Red Sports Car",
+      "image_url": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg"
+    },
+    {
+      "title": "Classic Muscle Car",
+      "image_url": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg"
+    },
+    {
+      "title": "SUV in the Mountains",
+      "image_url": "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg"
+    },
+    {
+      "title": "Convertible on Road",
+      "image_url": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg"
+    }
+  ],
+  "flower": [
+    {
+      "title": "Pink Rose",
+      "image_url": "https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg"
+    },
+    {
+      "title": "Sunflower Field",
+      "image_url": "https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg"
+    },
+    {
+      "title": "Purple Tulips",
+      "image_url": "https://images.pexels.com/photos/1029613/pexels-photo-1029613.jpeg"
+    },
+    {
+      "title": "White Daisies",
+      "image_url": "https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg"
+    }
+  ]
+}
