@@ -1,74 +1,81 @@
 {
-  "dog": [
+  "clothes": [
     {
-      "title": "Golden Retriever",
-      "image_url": "https://images.pexels.com/photos/774731/pexels-photo-774731.jpeg"
+      "title": "Denim Jacket",
+      "image_url": "https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg",
+      "source": "Instagram",
+      "logo": "/logo/instagram.svg"
     },
     {
-      "title": "Pug",
-      "image_url": "https://images.pexels.com/photos/374898/pexels-photo-374898.jpeg"
+      "title": "Summer Dress",
+      "image_url": "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg",
+      "source": "Threads",
+      "logo": "/logo/threads.svg"
     },
     {
-      "title": "Husky in Snow",
-      "image_url": "https://images.pexels.com/photos/573242/pexels-photo-573242.jpeg"
-    },
+      "title": "Hoodie Style",
+      "image_url": "https://images.pexels.com/photos/5704849/pexels-photo-5704849.jpeg",
+      "source": "Instagram",
+      "logo": "/logo/instagram.svg"
+    }
+,
     {
-      "title": "Black Labrador",
-      "image_url": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
+      "title": "Cozy Sweater",
+      "image_url": "https://images.pexels.com/photos/713047/pexels-photo-713047.jpeg",
+      "source": "YouTube",
+      "logo": "/logo/youtube.svg"
     }
   ],
-  "cat": [
+  "bags": [
     {
-      "title": "Siamese Cat",
-      "image_url": "https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg"
+      "title": "Leather Tote",
+      "image_url": "https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg",
+      "source": "Instagram",
+      "logo": "/logo/instagram.svg"
     },
     {
-      "title": "Sleeping Cat",
-      "image_url": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
+      "title": "Mini Backpack",
+      "image_url": "https://images.pexels.com/photos/1082526/pexels-photo-1082526.jpeg",
+      "source": "YouTube",
+      "logo": "/logo/youtube.svg"
     },
     {
-      "title": "Curious Kitten",
-      "image_url": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg"
+      "title": "Canvas Sling",
+      "image_url": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+      "source": "Facebook",
+      "logo": "/logo/facebook.svg"
     },
     {
-      "title": "Cat by the Window",
-      "image_url": "https://images.pexels.com/photos/326875/pexels-photo-326875.jpeg"
+      "title": "Chic Clutch",
+      "image_url": "https://images.pexels.com/photos/1667078/pexels-photo-1667078.jpeg",
+      "source": "Threads",
+      "logo": "/logo/threads.svg"
     }
   ],
-  "car": [
+  "shoes": [
     {
-      "title": "Red Sports Car",
-      "image_url": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg"
+      "title": "White Sneakers",
+      "image_url": "https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg",
+      "source": "Threads",
+      "logo": "/logo/threads.svg"
     },
     {
-      "title": "Classic Muscle Car",
-      "image_url": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg"
+      "title": "Heeled Sandals",
+      "image_url": "https://images.pexels.com/photos/1526818/pexels-photo-1526818.jpeg",
+      "source": "Instagram",
+      "logo": "/logo/instagram.svg"
     },
     {
-      "title": "SUV in the Mountains",
-      "image_url": "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg"
+      "title": "Leather Loafers",
+      "image_url": "https://images.pexels.com/photos/2529146/pexels-photo-2529146.jpeg",
+      "source": "Facebook",
+      "logo": "/logo/facebook.svg"
     },
     {
-      "title": "Convertible on Road",
-      "image_url": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg"
-    }
-  ],
-  "flower": [
-    {
-      "title": "Pink Rose",
-      "image_url": "https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg"
-    },
-    {
-      "title": "Sunflower Field",
-      "image_url": "https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg"
-    },
-    {
-      "title": "Purple Tulips",
-      "image_url": "https://images.pexels.com/photos/1029613/pexels-photo-1029613.jpeg"
-    },
-    {
-      "title": "White Daisies",
-      "image_url": "https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg"
+      "title": "Chunky Boots",
+      "image_url": "https://images.pexels.com/photos/5709664/pexels-photo-5709664.jpeg",
+      "source": "YouTube",
+      "logo": "/logo/youtube.svg"
     }
   ]
 }

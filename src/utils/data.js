@@ -48,3 +48,11 @@ export const ImageSearchButtonsData = [
     type: "icon",
   },
 ];
+
+export const subCategories = [
+  "All",
+  "Products",
+  "Homework",
+  "Visual matches",
+  "About this image",
+];

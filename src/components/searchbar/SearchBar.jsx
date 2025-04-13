@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  FaSearch,
-  FaMicrophone,
-  FaCamera,
-  FaAngleLeft,
-  FaGlobe,
-  FaMusic,
-} from "react-icons/fa";
+import { FaSearch, FaMicrophone, FaCamera, FaAngleLeft } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { trendingItems } from "../../utils/data";
 import { HiTrendingUp } from "react-icons/hi";
@@ -30,10 +23,8 @@ export default function SearchBar() {
     setShowVoiceOverlay(false);
     setShowImageLens(true);
   };
-  //ss
   return (
     <>
-      {/* Search Input Default */}
       <div
         className={`relative w-full max-w-xl mx-auto ${
           showOverlay || showVoiceOverlay ? "hidden" : "block sm:block"

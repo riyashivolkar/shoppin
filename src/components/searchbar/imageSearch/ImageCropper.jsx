@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import Cropper from "react-easy-crop";
-import ResultsSheet from "../../ResultsSheet"; // Import ResultsSheet
+import ResultsSheet from "../../ResultsSheet";
 
 const ImageCropper = ({ imageSrc, onCropDone, onClose }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [showResults, setShowResults] = useState(false); // State to control bottom sheet visibility
-
+  const [showResults, setShowResults] = useState(false);
   const handleCropComplete = (_, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
-  // 🚀 Auto redirect once image is uploaded and show results in Bottom Sheet
   useEffect(() => {
     if (imageSrc) {
       setShowResults(true); // Open the bottom sheet with animation
@@ -30,11 +28,10 @@ const ImageCropper = ({ imageSrc, onCropDone, onClose }) => {
         onCropComplete={handleCropComplete}
         cropShape="rect"
       />
-
-      {/* ResultsSheet will open after image upload */}
       <ResultsSheet
         open={showResults}
-        onDismiss={() => setShowResults(false)} // Dismiss bottom sheet
+        imageSrc={imageSrc}
+        onDismiss={() => setShowResults(false)}
       />
     </div>
   );
