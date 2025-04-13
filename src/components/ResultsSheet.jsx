@@ -1,9 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useDrag } from "@use-gesture/react";
 import mockResults from "../utils/mockResult.json";
 import { subCategories } from "../utils/data";
-import Masonry from "react-masonry-css";
 
 const ResultsSheet = ({ onDismiss, imageSrc }) => {
   const [query, setQuery] = useState("");
@@ -12,13 +11,20 @@ const ResultsSheet = ({ onDismiss, imageSrc }) => {
 
   const [{ y }, api] = useSpring(() => ({ y: 500 }));
 
-  const breakpointColumnsObj = {
-    default: 2,
-    768: 1,
-  };
+  // Fix for mobile Safari height issue
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    setViewportHeight();
+    window.addEventListener("resize", setViewportHeight);
+    return () => window.removeEventListener("resize", setViewportHeight);
+  }, []);
 
   const bind = useDrag(
-    ({ last, movement: [, my], velocity: [, vy], cancel, event, target }) => {
+    ({ last, movement: [, my], velocity: [, vy], target }) => {
       const isScrollable = target.closest(".scrollable");
       if (isScrollable && isScrollable.scrollTop > 0) return;
 
@@ -49,8 +55,9 @@ const ResultsSheet = ({ onDismiss, imageSrc }) => {
       {...bind()}
       style={{
         transform: y.to((val) => `translateY(${val}px)`),
+        maxHeight: "calc(var(--vh, 1vh) * 100)",
       }}
-      className="fixed bottom-0 left-0 right-0 z-50 max-h-[100vh] bg-white shadow-lg rounded-t-2xl p-4 flex flex-col"
+      className="fixed bottom-0 left-0 right-0 z-50 flex flex-col p-4 bg-white shadow-lg rounded-t-2xl"
     >
       <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-400" />
 
@@ -88,14 +95,14 @@ const ResultsSheet = ({ onDismiss, imageSrc }) => {
             <div
               key={index}
               className={`px-2 py-2 text-sm ${
-                index === 0 ? "border-gray-600 font-semibold" : " "
+                index === 0 ? "border-gray-600 font-semibold" : ""
               } cursor-pointer hover:bg-gray-100 transition`}
             >
               {item}
               <div
                 className={`py-1 px-2 text-sm ${
-                  index === 0 ? "border-gray-600 border-b-2 font-semibold" : " "
-                } `}
+                  index === 0 ? "border-gray-600 border-b-2 font-semibold" : ""
+                }`}
               />
             </div>
           ))}
