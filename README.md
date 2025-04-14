@@ -1,4 +1,4 @@
-# 🛍️ Shoppin'
+# 🍓 Shoppin'
 
 
 
@@ -8,14 +8,14 @@
 
 ## 🔧 Features
 
-### ✅ Layout
+### Layout
 - **Header Image:** Styled similar to Google's official website (for `lg` and `md` screens).
 - **Fidget & Feed Components:** Visible only on `lg` and `md` devices, inspired by the Google web layout.
 - **Google Sign-In:** Authentication uses Google OAuth.
 
 ---
 
-### 🧠 Image Search Lens
+### Image Search Lens
 - Works smoothly on `sm` (mobile) devices.
 - Includes:
   - Real-time camera capture
@@ -31,12 +31,9 @@
 - **MediaStack API** — Used in `Feed` component for `md` and `lg` devices.
 - **NewsAPI** — Used in `Feed` component for `sm` (mobile) devices.
 
-📌 **Next Task:**  
-- [ ] Generate new API key for **MediaStack** for production.
-
 ---
 
-## 🖥️ Cross-Platform Compatibility
+## Cross-Platform Compatibility
 
 - ✅ Fully responsive and tested across major modern browsers.
 - ✅ Cross-device (desktop and mobile) optimized.
@@ -55,7 +52,7 @@
 
 ---
 
-## 🧪 Tech Stack
+## Tech Stack
 
 - **React.js** with modular components
 - **Tailwind CSS** for responsive styling
@@ -66,7 +63,7 @@
 
 ---
 
-## 🙌 Author
+## Author
 
 Built by **Riya** — a Google UI clone experiment and responsive design challenge.
 
