@@ -7,7 +7,7 @@ import { HiTrendingUp } from "react-icons/hi";
 import VoiceOverlay from "./VoiceOverlay";
 import ImageSearchLens from "./imageSearch/ImageSearchLens";
 
-export default function SearchBar() {
+export default function SearchBar({ setShowCameraView }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [showImageLens, setShowImageLens] = useState(false);
@@ -21,8 +21,14 @@ export default function SearchBar() {
     e.stopPropagation();
     setShowOverlay(false);
     setShowVoiceOverlay(false);
-    setShowImageLens(true);
+
+    if (window.innerWidth >= 1024) {
+      setShowCameraView(true); // Only on lg and above
+    } else {
+      setShowImageLens(true); // Mobile behavior
+    }
   };
+
   return (
     <>
       <div

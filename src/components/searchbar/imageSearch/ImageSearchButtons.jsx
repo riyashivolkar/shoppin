@@ -1,6 +1,4 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
-import { HiOutlineAcademicCap } from "react-icons/hi";
 
 const ImageSearchButtons = ({ label, icon, type = "icon", active = false }) => {
   const baseStyles =

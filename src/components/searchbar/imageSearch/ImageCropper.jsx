@@ -7,27 +7,29 @@ const ImageCropper = ({ imageSrc, onCropDone, onClose }) => {
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [showResults, setShowResults] = useState(false);
-  const handleCropComplete = (_, croppedAreaPixels) => {
+  const handleCropComplete = (_, croppedAreaPixel, imgSrc) => {
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
   useEffect(() => {
     if (imageSrc) {
-      setShowResults(true); // Open the bottom sheet with animation
+      setShowResults(true);
     }
   }, [imageSrc]);
 
   return (
     <div className="relative flex items-center justify-center w-full h-full overflow-hidden bg-white">
-      <Cropper
-        image={imageSrc}
-        crop={crop}
-        zoom={zoom}
-        onCropChange={setCrop}
-        onZoomChange={setZoom}
-        onCropComplete={handleCropComplete}
-        cropShape="rect"
-      />
+      {imageSrc && (
+        <Cropper
+          image={imageSrc}
+          crop={crop}
+          zoom={zoom}
+          onCropChange={setCrop}
+          onZoomChange={setZoom}
+          onCropComplete={handleCropComplete}
+          cropShape="rect"
+        />
+      )}
       <ResultsSheet
         open={showResults}
         imageSrc={imageSrc}

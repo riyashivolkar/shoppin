@@ -1,26 +1,26 @@
 {
   "clothes": [
     {
-      "title": "Denim Jacket",
+      "title": "Shoppin' Denim Jacket",
       "image_url": "https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg",
       "source": "Instagram",
       "logo": "/logo/instagram.svg"
     },
     {
-      "title": "Summer Dress",
+      "title": "Shoppin' Summer Dress",
       "image_url": "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg",
       "source": "Threads",
       "logo": "/logo/threads.svg"
     },
     {
-      "title": "Hoodie Style",
+      "title": "Shoppin' Hoodie Style",
       "image_url": "https://images.pexels.com/photos/5704849/pexels-photo-5704849.jpeg",
       "source": "Instagram",
       "logo": "/logo/instagram.svg"
     }
 ,
     {
-      "title": "Cozy Sweater",
+      "title": "Shoppin' Cozy Sweater",
       "image_url": "https://images.pexels.com/photos/713047/pexels-photo-713047.jpeg",
       "source": "YouTube",
       "logo": "/logo/youtube.svg"
@@ -28,25 +28,25 @@
   ],
   "bags": [
     {
-      "title": "Leather Tote",
+      "title": "Shoppin' Leather Tote",
       "image_url": "https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg",
       "source": "Instagram",
       "logo": "/logo/instagram.svg"
     },
     {
-      "title": "Mini Backpack",
+      "title": "Shoppin' Mini Backpack",
       "image_url": "https://images.pexels.com/photos/1082526/pexels-photo-1082526.jpeg",
       "source": "YouTube",
       "logo": "/logo/youtube.svg"
     },
     {
-      "title": "Canvas Sling",
+      "title": "Shoppin' Canvas Sling",
       "image_url": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
       "source": "Facebook",
       "logo": "/logo/facebook.svg"
     },
     {
-      "title": "Chic Clutch",
+      "title": "Shoppin' Chic Clutch",
       "image_url": "https://images.pexels.com/photos/1667078/pexels-photo-1667078.jpeg",
       "source": "Threads",
       "logo": "/logo/threads.svg"
@@ -54,25 +54,25 @@
   ],
   "shoes": [
     {
-      "title": "White Sneakers",
+      "title": "Shoppin' White Sneakers",
       "image_url": "https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg",
       "source": "Threads",
       "logo": "/logo/threads.svg"
     },
     {
-      "title": "Heeled Sandals",
+      "title": "Shoppin' Heeled Sandals",
       "image_url": "https://images.pexels.com/photos/1526818/pexels-photo-1526818.jpeg",
       "source": "Instagram",
       "logo": "/logo/instagram.svg"
     },
     {
-      "title": "Leather Loafers",
+      "title": "Shoppin' Leather Loafers",
       "image_url": "https://images.pexels.com/photos/2529146/pexels-photo-2529146.jpeg",
       "source": "Facebook",
       "logo": "/logo/facebook.svg"
     },
     {
-      "title": "Chunky Boots",
+      "title": "Shoppin' Chunky Boots",
       "image_url": "https://images.pexels.com/photos/5709664/pexels-photo-5709664.jpeg",
       "source": "YouTube",
       "logo": "/logo/youtube.svg"

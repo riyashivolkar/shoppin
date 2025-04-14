@@ -56,13 +56,21 @@ const ResultsSheet = ({ onDismiss, imageSrc }) => {
       style={{
         transform: y.to((val) => `translateY(${val}px)`),
         maxHeight: "calc(var(--vh, 1vh) * 100)",
+        borderTopLeftRadius: y.to((val) => (val >= 300 ? "1rem" : "0rem")),
+        borderTopRightRadius: y.to((val) => (val >= 300 ? "1rem" : "0rem")),
       }}
-      className="fixed bottom-0 left-0 right-0 z-50 flex flex-col p-4 bg-white shadow-lg rounded-t-2xl"
+      className="fixed bottom-0 left-0 right-0 z-50 flex flex-col p-4 bg-white shadow-lg"
     >
-      <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-400" />
+      <animated.div
+        style={{
+          opacity: y.to((val) => (val >= 300 ? 1 : 0)),
+          pointerEvents: y.to((val) => (val >= 300 ? "auto" : "none")),
+        }}
+        className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-400"
+      />
 
       {/* Header/Input Area */}
-      <div className="relative w-full max-w-xl mx-auto mb-4 shrink-0">
+      <div className="relative w-full max-w-xl mx-auto mb-4 md:max-w-6xl shrink-0">
         <img
           src="/logo/google.svg"
           alt="Google Icon"
@@ -111,7 +119,7 @@ const ResultsSheet = ({ onDismiss, imageSrc }) => {
 
       {/* Scrollable Masonry Container */}
       <div className="flex-1 overflow-y-auto scrollable">
-        <div className="gap-4 pb-20 columns-2">
+        <div className="gap-4 pb-20 columns-2 md:columns-3 lg:columns-4">
           {flatResults.map((item, index) => {
             const isPortrait = index % 2 === 0;
             const heightClass = isPortrait ? "h-60" : "h-32";

@@ -122,33 +122,16 @@ const ImageSearchLens = ({ show, onClose }) => {
         </div>
       )}
 
-      {/* Cropping View */}
       {imageSrc && showCropper && (
         <ImageCropper
           imageSrc={imageSrc}
           onCropDone={(croppedAreaPixels) => {
             console.log("Crop Area:", croppedAreaPixels);
-            uploadImage(croppedAreaPixels); // or pass to next step
+            uploadImage(croppedAreaPixels);
             setShowCropper(false);
           }}
           onClose={() => setShowCropper(false)}
         />
-      )}
-
-      {/* Loading Spinner */}
-      {loading && (
-        <div className="absolute left-0 right-0 text-sm text-center text-gray-300 bottom-4">
-          Processing image...
-        </div>
-      )}
-
-      {/* Result Box */}
-      {results && !loading && (
-        <div className="absolute px-6 py-4 text-center text-white -translate-x-1/2 shadow-lg bottom-20 left-1/2 bg-black/70 rounded-xl backdrop-blur">
-          <h2 className="mb-1 text-lg font-semibold">Search Results:</h2>
-          <p className="text-sm">Label: {results.label}</p>
-          <p className="text-sm">Confidence: {results.confidence}</p>
-        </div>
       )}
     </motion.div>
   );

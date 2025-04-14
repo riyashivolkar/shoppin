@@ -11,8 +11,8 @@ const Lens = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result); // Set uploaded image as base64 data
-        setShowResults(true); // Show results bottom sheet automatically
+        setImage(reader.result);
+        setShowResults(true);
       };
       reader.readAsDataURL(file);
     }
@@ -29,7 +29,6 @@ const Lens = () => {
       />
       {image && <ImageCropper imageSrc={image} />}
 
-      {/* Show Results Bottom Sheet when image is uploaded */}
       <ResultsSheet
         open={showResults}
         onDismiss={() => setShowResults(false)}
