@@ -30,6 +30,7 @@ export default function Home() {
         <>
           <SearchBar setShowCameraView={setShowCameraView} />
           <Fidgets />
+          <Feed />
         </>
       )}
 

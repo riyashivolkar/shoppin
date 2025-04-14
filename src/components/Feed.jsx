@@ -28,7 +28,7 @@ export default function Feed() {
     title.length > maxLength ? title.slice(0, maxLength) + "..." : title;
 
   return (
-    <div>
+    <div className="w-full ">
       <div className="hidden w-full px-4 py-3 mt-6 md:block">
         <h3 className="flex items-center gap-2 mb-4 text-xl font-semibold text-gray-800">
           Trending News

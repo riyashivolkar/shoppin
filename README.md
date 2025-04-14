@@ -1,31 +1,75 @@
-# React & Tailwind CSS Starter Pack
+# 🛍️ Shoppin'
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
 
-## Usage
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+🌐 **Live Site:** [shoppin-blush.vercel.app](https://shoppin-blush.vercel.app/)
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+---
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+## 🔧 Features
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+### ✅ Layout
+- **Header Image:** Styled similar to Google's official website (for `lg` and `md` screens).
+- **Fidget & Feed Components:** Visible only on `lg` and `md` devices, inspired by the Google web layout.
+- **Google Sign-In:** Authentication uses Google OAuth.
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+---
 
-## Contributing
+### 🧠 Image Search Lens
+- Works smoothly on `sm` (mobile) devices.
+- Includes:
+  - Real-time camera capture
+  - Image upload from gallery
+  - Cropping tool
+  - Future-ready for integration with image recognition APIs
+- ⚠️ **Note:** Responsiveness for `md` and `lg` devices in this feature can be improved.
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+---
+
+## 🔌 APIs Used
+
+- **MediaStack API** — Used in `Feed` component for `md` and `lg` devices.
+- **NewsAPI** — Used in `Feed` component for `sm` (mobile) devices.
+
+📌 **Next Task:**  
+- [ ] Generate new API key for **MediaStack** for production.
+
+---
+
+## 🖥️ Cross-Platform Compatibility
+
+- ✅ Fully responsive and tested across major modern browsers.
+- ✅ Cross-device (desktop and mobile) optimized.
+
+---
+
+---
+
+## ⚠️ Disadvantages / Things To Improve
+
+- ❌ **Image Search Lens responsiveness on `md` and `lg` screens** is limited and needs refinement.
+- ❌ No backend or real AI integration yet for image recognition — currently a UI simulation.
+- ❌ Results are hardcoded — no dynamic results based on uploaded images.
+- ❌ Error handling and loading feedback in the UI can be improved.
+- ❌ Needs enhancements in animation and user experience polish.
+
+---
+
+## 🧪 Tech Stack
+
+- **React.js** with modular components
+- **Tailwind CSS** for responsive styling
+- **Framer Motion** for animations
+- **React Webcam** for camera access
+- **Firebase Auth** for Google Sign-In
+- **Vercel** for deployment
+
+---
+
+## 🙌 Author
+
+Built by **Riya** — a Google UI clone experiment and responsive design challenge.
+
+---
+
+THANK YOU
