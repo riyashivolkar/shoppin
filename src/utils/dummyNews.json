@@ -1,0 +1,52 @@
+{
+  "articles": [
+    {
+      "title": "Breaking News: Tech Stocks Surge",
+      "description": "Tech stocks are seeing a major rise today.",
+      "urlToImage": "https://images.pexels.com/photos/1526818/pexels-photo-1526818.jpeg",
+      "source": { "name": "TechCrunch" },
+      "publishedAt": "2025-04-14T10:00:00Z",
+      "url": "https://example.com/article1"
+    },
+    {
+      "title": "Market Update: Stocks Hit New Highs",
+      "description": "The stock market is seeing unprecedented highs this week.",
+      "urlToImage": "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg",
+      "source": { "name": "Bloomberg" },
+      "publishedAt": "2025-04-14T11:00:00Z",
+      "url": "https://example.com/article2"
+    },
+    {
+      "title": "Economy: Unemployment Rates at All-Time Low",
+      "description": "The unemployment rate in the US hits an all-time low.",
+      "urlToImage": "https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg",
+      "source": { "name": "The Economist" },
+      "publishedAt": "2025-04-14T12:00:00Z",
+      "url": "https://example.com/article3"
+    },
+    {
+      "title": "Tech Innovations: Breakthrough Devices",
+      "description": "New tech gadgets are transforming industries.",
+      "urlToImage": "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg",
+      "source": { "name": "TechCrunch" },
+      "publishedAt": "2025-04-14T13:00:00Z",
+      "url": "https://example.com/article4"
+    },
+    {
+      "title": "Stock Market Analysis: Bullish Trends",
+      "description": "The market is experiencing a bullish trend this week.",
+      "urlToImage": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg",
+      "source": { "name": "Bloomberg" },
+      "publishedAt": "2025-04-14T14:00:00Z",
+      "url": "https://example.com/article5"
+    },
+    {
+      "title": "Job Growth: Record Highs in Employment",
+      "description": "The job market is booming with record highs.",
+      "urlToImage": "https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg",
+      "source": { "name": "The Economist" },
+      "publishedAt": "2025-04-14T15:00:00Z",
+      "url": "https://example.com/article6"
+    }
+  ]
+}
